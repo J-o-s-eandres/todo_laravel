@@ -31,8 +31,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required| unique:categories|min:5|max:255',
-            'color' => 'required|max;7'
+            'name' => 'required|unique:categories|min:5|max:255',
+            'color' => 'required|max:7'
         ]);
         $category = new Category();
         $category->name = $request->name;
@@ -78,6 +78,9 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category  = Category::find($id);
+        $category->todos()->each(function($todo){
+            $todo->delete();
+        });
         $category->delete();
 
        return redirect()->route('categories.index')->with('success', 'Categoria eliminada');

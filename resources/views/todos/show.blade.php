@@ -19,7 +19,7 @@
                 <label for="title" class="form-label">Título de la tarea</label>
                 <input type="text" name="title" class="form-control" value="{{ $todo->title}}">
             </div>
-            <button type="submit" class="btn btn-primary">Actualizar tarea</button>
+            <button type="submit" class="btn btn-outline-success">Actualizar tarea</button>
         </form>
         <div>
 
